@@ -7,17 +7,21 @@
     text-align: center;
     
     &:hover {
-        transition: .2s;
         background: darken(white, 10%);
+    }
+    
+    &:active {
         color: white;
     }
 
     &-success {
-        background: linear-gradient($success, darken($success, 20%));
+        @extend .answer;
+        background: linear-gradient($success, darken($success, 40%));
     }
 
     &-wrong {
-        background: linear-gradient($error, darken($error, 20%));
+        @extend .answer;
+        background: linear-gradient($error, darken($error, 40%));
     }
     
     

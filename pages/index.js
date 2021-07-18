@@ -22,11 +22,6 @@ export default class extends PureComponent {
         const { inGame } = this.state;
         
         if(inGame === false) return <WelcomeScreen startGame={this.startGame} />
-        else 
-            return (
-                <div>
-                    <Quiz />
-                </div>
-            )
+        else return <Quiz />
     }
 }
