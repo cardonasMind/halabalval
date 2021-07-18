@@ -1,0 +1,11 @@
+@import "../../styles/variables";
+
+#quiz {
+    padding: $margin-content;
+    
+    
+    &-answers {
+        display: grid;
+        grid-gap: 1rem;
+    }
+}

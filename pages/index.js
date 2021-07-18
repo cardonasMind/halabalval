@@ -1,10 +1,14 @@
 import React, { PureComponent } from "react";
 
+import { Quiz } from "../src/components";
+
 const Welcome = ({ startGame }) => 
     <div>
         <h1>Welcome</h1>
         <button onClick={startGame}>click to Start!</button>
     </div>
+
+
 
 export default class extends PureComponent {
     state = { inGame: false }
@@ -18,7 +22,7 @@ export default class extends PureComponent {
         else 
             return (
                 <div>
-                    <h1>THIS IS QUIZ</h1>
+                    <Quiz />
                 </div>
             )
     }
