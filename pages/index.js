@@ -1,11 +1,14 @@
 import React, { PureComponent } from "react";
+import styles from "./index.module.scss";
 
 import { Quiz } from "../src/components";
 
-const Welcome = ({ startGame }) => 
-    <div>
-        <h1>Welcome</h1>
+const WelcomeScreen = ({ startGame }) => 
+    <div id={styles["welcome-screen"]}>
+        <img src="static/images/logo.png" alt="the Countries Quiz Game" />
         <button onClick={startGame}>click to Start!</button>
+
+        <p>HALABALVAL It´s just a random word, like the style of this game.</p>
     </div>
 
 
@@ -13,12 +16,12 @@ const Welcome = ({ startGame }) =>
 export default class extends PureComponent {
     state = { inGame: false }
 
-    startGame = () => this.setState({ inGame: true });
+    startGame = () => setTimeout(() => this.setState({ inGame: true }), 100);
 
     render() {
         const { inGame } = this.state;
         
-        if(inGame === false) return <Welcome startGame={this.startGame} />
+        if(inGame === false) return <WelcomeScreen startGame={this.startGame} />
         else 
             return (
                 <div>
