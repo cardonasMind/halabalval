@@ -1,0 +1,19 @@
+{
+  "name": "halabalval-countries-quiz",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "redux": "4.1.0",
+    "sass": "1.35.2"
+  },
+  "license": "MIT",
+  "keywords": [],
+  "description": "HALABALVAL doesn't mean anything, It's just a random word"
+}
