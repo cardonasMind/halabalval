@@ -1,3 +1,5 @@
+@import "../../../styles/variables";
+
 .answer {
     background: white;
     border-radius: .4rem;
@@ -5,7 +7,17 @@
     text-align: center;
     
     &:hover {
+        transition: .2s;
         background: darken(white, 10%);
+        color: white;
+    }
+
+    &-success {
+        background: linear-gradient($success, darken($success, 20%));
+    }
+
+    &-wrong {
+        background: linear-gradient($error, darken($error, 20%));
     }
     
     
