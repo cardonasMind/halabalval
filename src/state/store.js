@@ -83,35 +83,54 @@ const placeholderQuestionThree = {
 
 
 const initialState = {
-    question: {
-        text: "This flag corresponds to?",
-        flag: "https://restcountries.eu/data/col.svg"
-    },
-    answers: [
-        {
-            text: "Colombia",
-            correct: true
+    inGame: false,
+
+
+
+    actualQuestion: {
+        question: {
+            text: "This flag corresponds to?",
+            flag: "https://restcountries.eu/data/col.svg"
         },
-        {
-            text: "Bolivia",
-            correct: false
-        },
-        {
-            text: "Venezuela",
-            correct: false
-        },
-        {
-            text: "Ecuador",
-            correct: false
-        }
-    ],
-    selectedAnswerId: -1
+        answers: [
+            {
+                text: "Colombia",
+                correct: true
+            },
+            {
+                text: "Bolivia",
+                correct: false
+            },
+            {
+                text: "Venezuela",
+                correct: false
+            },
+            {
+                text: "Ecuador",
+                correct: false
+            }
+        ],
+        selectedAnswerId: -1
+    }
 };
 
 const reducer = (state, action) => {
+    switch(action.type) {
+        case "START_GAME":
+            return {
+                ...state, inGame: true
+            }
 
 
-    return {...state}
+        /*case "SELECT_ANSWER":
+            return {
+                ...state, selectedAnswerId: action.payload.id
+            }*/
+
+
+        default: 
+            return {...state}
+    }
 }
 
 export default createStore(reducer, initialState);

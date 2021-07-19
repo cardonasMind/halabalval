@@ -1,34 +1,35 @@
 import React, { PureComponent, Fragment } from "react";
-import styles from "./index.module.scss";
+import Router from "next/router";
 
 import { store } from "../src/state";
+
 import { Quiz, Score } from "../src/components";
 
-const WelcomeScreen = ({ startGame }) => 
-    <div id={styles["welcome-screen"]}>
-        <img src="static/images/logo.png" alt="the Countries Quiz Game" />
-        <button onClick={startGame}>click to Start!</button>
-
-        <p>HALABALVAL It´s just a random word, like the style of this game.</p>
-    </div>
-
-
-
 export default class extends PureComponent {
-    state = { inGame: false }
+    state = {
+        inGame: false,
+        actualQuestion: {}
+    }
 
-    startGame = () => setTimeout(() => this.setState({ inGame: true }), 100);
+    componentDidMount() {
+        const { inGame } = this.state;
+        store.subscribe(() => {
+            const { inGame, actualQuestion } = store.getState();
+
+            this.setState({ inGame, actualQuestion });
+        });
+
+        if(!inGame) Router.replace("/welcome");
+    }
 
     render() {
-        const { inGame } = this.state;
-        
-        if(inGame === false) return <WelcomeScreen startGame={this.startGame} />
-        else 
-            return (
-                <Fragment>
-                    <Quiz {...store.getState()} />
+        const { actualQuestion } = this.state;
+
+            return ( <h1>FFF</h1>)
+                {/*<Fragment>
+                    <Quiz {...actualQuestion} />
                     <Score />
                 </Fragment>
-            )
+                )*/}
     }
 }
