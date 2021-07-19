@@ -1,0 +1,12 @@
+@import "../../styles/variables";
+
+#score {
+    background: $primary;
+    color: white;
+    padding: $margin-content;
+    width: fit-content;
+
+    h4 {
+        color: $success;
+    }
+}

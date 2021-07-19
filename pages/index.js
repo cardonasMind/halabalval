@@ -1,7 +1,7 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent, Fragment } from "react";
 import styles from "./index.module.scss";
 
-import { Quiz } from "../src/components";
+import { Quiz, Score } from "../src/components";
 
 const WelcomeScreen = ({ startGame }) => 
     <div id={styles["welcome-screen"]}>
@@ -22,6 +22,12 @@ export default class extends PureComponent {
         const { inGame } = this.state;
         
         if(inGame === false) return <WelcomeScreen startGame={this.startGame} />
-        else return <Quiz />
+        else 
+            return (
+                <Fragment>
+                    <Quiz />
+                    <Score />
+                </Fragment>
+            )
     }
 }
