@@ -85,6 +85,15 @@ const placeholderQuestionThree = {
 const Quiz = () => {
     const { question, answers } = placeholderQuestionOne;
     
+    const selectAnswer = correct => {
+        if(correct) alert("GREAT SUCCESS!");
+        else {
+            const correctAnswerIs = answers.indexOf(answers.find(answer => answer.correct === true));
+            
+            alert("Correct answer is index: " + correctAnswerIs);
+        }
+    }
+    
     const answersAsGrid = answers.find(answer => answer.flag);
     
     return (
@@ -92,10 +101,10 @@ const Quiz = () => {
             <Question text={question.text} flag={question.flag} />
         
             <div id={answersAsGrid ? styles["quiz-answers-grid"] : styles["quiz-answers"]}>
-                <Answer indicator="a." correct={answers[0].correct} answer={answers[0].text} flag={answers[0].flag} />
-                <Answer indicator="b." correct={answers[1].correct} answer={answers[1].text} flag={answers[1].flag} />
-                <Answer indicator="c." correct={answers[2].correct} answer={answers[2].text} flag={answers[2].flag} />
-                <Answer indicator="d." correct={answers[3].correct} answer={answers[3].text} flag={answers[3].flag} />
+                <Answer selectAnswer={selectAnswer} indicator="a." correct={answers[0].correct} answer={answers[0].text} flag={answers[0].flag} />
+                <Answer selectAnswer={selectAnswer} indicator="b." correct={answers[1].correct} answer={answers[1].text} flag={answers[1].flag} />
+                <Answer selectAnswer={selectAnswer} indicator="c." correct={answers[2].correct} answer={answers[2].text} flag={answers[2].flag} />
+                <Answer selectAnswer={selectAnswer} indicator="d." correct={answers[3].correct} answer={answers[3].text} flag={answers[3].flag} />
             </div>
         </div>
     )

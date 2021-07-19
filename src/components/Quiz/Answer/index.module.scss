@@ -6,24 +6,6 @@
     padding: .4rem;
     text-align: center;
     
-    &:hover {
-        background: darken(white, 10%);
-    }
-    
-    &:active {
-        color: white;
-    }
-
-    &-success {
-        @extend .answer;
-        background: linear-gradient($success, darken($success, 40%));
-    }
-
-    &-wrong {
-        @extend .answer;
-        background: linear-gradient($error, darken($error, 40%));
-    }
-    
     
     b {
         float: left;
@@ -33,4 +15,17 @@
     img {
         width: 100%;
     }
+}
+
+
+.answer-success, .answer-wrong {
+    @extend .answer;
+}
+
+.answer-success {
+    background: linear-gradient($success, darken($success, 40%));
+}
+
+.answer-wrong {
+    background: linear-gradient($error, darken($error, 40%));
 }
