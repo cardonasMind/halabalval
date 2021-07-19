@@ -1,6 +1,7 @@
 import React, { PureComponent, Fragment } from "react";
 import styles from "./index.module.scss";
 
+import { store } from "../src/state";
 import { Quiz, Score } from "../src/components";
 
 const WelcomeScreen = ({ startGame }) => 
@@ -25,7 +26,7 @@ export default class extends PureComponent {
         else 
             return (
                 <Fragment>
-                    <Quiz />
+                    <Quiz {...store.getState()} />
                     <Score />
                 </Fragment>
             )
