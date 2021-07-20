@@ -1,7 +1,10 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 import App from "next/app";
 import Head from "next/head";
+
+import { Provider } from "react-redux";
+import { store } from "../src/state";
 
 // Global styles
 import "../src/styles/index.scss";
@@ -11,7 +14,7 @@ export default class extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <Fragment>
+      <Provider store={store}>
         <Head>
           <meta charSet="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,7 +24,7 @@ export default class extends App {
         </Head>
 
         <Component {...pageProps} />
-      </Fragment>
+      </Provider>
     );
   }
 }

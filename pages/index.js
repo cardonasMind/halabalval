@@ -2,36 +2,34 @@ import React, { PureComponent, Fragment } from "react";
 
 import Router from "next/router";
 
+import { connect } from "react-redux";
 import { store } from "../src/state";
 
 import { Quiz, Score } from "../src/components";
 
-export default class extends PureComponent {
-    state = {
-        inGame: null,
-        actualQuestion: {}
-    }
-
+class Index extends PureComponent {
     componentDidMount() {
-        const { inGame, actualQuestion } = store.getState();
-        
-        this.setState({ inGame, actualQuestion });
-        
-        if(inGame === false) Router.push("/welcome");
+        if(this.props.inGame === false) Router.push("/welcome");
     }
     
-    render() {
-        const { inGame, actualQuestion } = this.state;
+    render () {
+        const { inGame, actualQuestion } = this.props;
         
-        if(inGame === null) return <b>Loading...</b>
-        else {
-            if(!inGame) return null;
-            else return (
-                <Fragment>
-                    <Quiz {...actualQuestion} />
-                    <Score />
-                </Fragment>
-            )
-        }
+        if(!inGame) return null;
+        else return (
+            <Fragment>
+                <Quiz {...actualQuestion} />
+                <Score />
+            </Fragment>
+        )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        inGame: state.inGame,
+        actualQuestion: state.actualQuestion
+    }
+}
+
+export default connect(mapStateToProps)(Index)

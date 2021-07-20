@@ -124,7 +124,8 @@ const reducer = (state, action) => {
 
         case "SELECT_ANSWER":
             return {
-                ...state.actualQuestion, selectedAnswerId: action.payload.id
+                ...state,
+                actualQuestion: {...state.actualQuestion, selectedAnswerId: action.payload.id}
             }
 
 

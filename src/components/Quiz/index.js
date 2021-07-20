@@ -8,15 +8,21 @@ import Answer from "./Answer";
 
 const Quiz = ({ question, answers, selectedAnswerId }) => {
     const selectAnswer = indicator => {
-        const indicators = ["a.", "b.", "c.", "d."];
-        const indicatorToId = indicators.indexOf(indicator);
+        if(selectedAnswerId === -1) {
+            const indicators = ["a.", "b.", "c.", "d."];
+            const indicatorToId = indicators.indexOf(indicator);
+
+            store.dispatch({
+               type: "SELECT_ANSWER",
+                payload: {
+                    id: indicatorToId
+                }
+            });
+        } else {
+            alert("YA")
+        }
         
-        store.dispatch({ 
-            type: "SELECT_ANSWER", 
-            payload: {
-                id: indicatorToId
-            }
-        });
+        
         
         
         /*if(correct) alert("GREAT SUCCESS!");
@@ -29,14 +35,8 @@ const Quiz = ({ question, answers, selectedAnswerId }) => {
     
     const answersAsGrid = answers.find(answer => answer.flag);
     
-    /*store.subscribe(() => {
-        console.log(store.getState());
-        
-    })*/
-    
     return (
         <div id={styles.quiz}>
-
             <Question text={question.text} flag={question.flag} />
         
             <div id={answersAsGrid ? styles["quiz-answers-grid"] : styles["quiz-answers"]}>
