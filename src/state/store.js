@@ -122,10 +122,10 @@ const reducer = (state, action) => {
             }
 
 
-        /*case "SELECT_ANSWER":
+        case "SELECT_ANSWER":
             return {
-                ...state, selectedAnswerId: action.payload.id
-            }*/
+                ...state.actualQuestion, selectedAnswerId: action.payload.id
+            }
 
 
         default: 

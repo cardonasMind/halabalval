@@ -8,7 +8,7 @@ const Answer = ({ selectAnswer, indicator, correct, answer, flag }) => {
         if(correct) setIsCorrect(true);
         else setIsCorrect(false);
         
-        selectAnswer(correct);
+        selectAnswer(indicator);
     }
     
     return (

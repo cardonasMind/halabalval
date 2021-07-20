@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./index.module.scss";
+
+import { useRouter } from "next/router";
 
 import { store } from "../../src/state";
 
 const WelcomeScreen = () => {
-    const startGame = () => store.dispatch({ type: "START_GAME" })
-
+    const router = useRouter();
+    
+    const startGame = () => {
+        store.dispatch({ type: "START_GAME" });
+        router.push("/");
+    }
+    
+    useEffect(() => {
+        if(store.getState().inGame) router.push("/");
+    });
+    
     return (
         <div id={styles["welcome-screen"]}>
             <img src="static/images/logo.png" alt="the Countries Quiz Game" />

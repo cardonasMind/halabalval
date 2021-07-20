@@ -1,23 +1,42 @@
 import React from "react";
 import styles from "./index.module.scss";
 
+import { store } from "../../state";
+
 import Question from "./Question";
 import Answer from "./Answer";
 
 const Quiz = ({ question, answers, selectedAnswerId }) => {
-    const selectAnswer = correct => {
-        if(correct) alert("GREAT SUCCESS!");
+    const selectAnswer = indicator => {
+        const indicators = ["a.", "b.", "c.", "d."];
+        const indicatorToId = indicators.indexOf(indicator);
+        
+        store.dispatch({ 
+            type: "SELECT_ANSWER", 
+            payload: {
+                id: indicatorToId
+            }
+        });
+        
+        
+        /*if(correct) alert("GREAT SUCCESS!");
         else {
             const correctAnswerIs = answers.indexOf(answers.find(answer => answer.correct === true));
             
             alert("Correct answer is index: " + correctAnswerIs);
-        }
+        }*/
     }
     
     const answersAsGrid = answers.find(answer => answer.flag);
     
+    /*store.subscribe(() => {
+        console.log(store.getState());
+        
+    })*/
+    
     return (
         <div id={styles.quiz}>
+
             <Question text={question.text} flag={question.flag} />
         
             <div id={answersAsGrid ? styles["quiz-answers-grid"] : styles["quiz-answers"]}>
