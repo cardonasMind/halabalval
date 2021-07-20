@@ -111,7 +111,8 @@ const initialState = {
             }
         ],
         selectedAnswerId: -1
-    }
+    },
+    score: 0
 };
 
 const reducer = (state, action) => {
@@ -126,6 +127,12 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 actualQuestion: {...state.actualQuestion, selectedAnswerId: action.payload.id}
+            }
+
+        
+        case "ADD_SCORE":
+            return {
+                ...state, score: state.score + 2
             }
 
 
