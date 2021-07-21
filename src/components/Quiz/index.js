@@ -33,9 +33,13 @@ const Quiz = ({ question, answers, selectedAnswerId }) => {
                 // ADD green background, 1 second, next question
                 setCorrectAnswerId(id);
                 
-                setTimeout(() => store.dispatch({
-                    type: "NEW_QUESTION"
-                }), 1000);
+                setTimeout(() => {
+                    store.dispatch({
+                        type: "NEW_QUESTION"
+                    });
+                           
+                    setCorrectAnswerId(null);  
+                }, 1000);
             }
 
             else {
