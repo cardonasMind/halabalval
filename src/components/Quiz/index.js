@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import styles from "./index.module.scss";
 
+import { useRouter } from "next/router";
+
 import { store } from "../../state";
 
 import Question from "./Question";
 import Answer from "./Answer";
 
 const Quiz = ({ question, answers, selectedAnswerId }) => {
+    const router = useRouter();
+    
     const [correctAnswerId, setCorrectAnswerId] = useState(null);
 
     const selectAnswer = id => {
@@ -26,13 +30,19 @@ const Quiz = ({ question, answers, selectedAnswerId }) => {
                     type: "ADD_SCORE"
                 });
 
-                // ADD green background, 1 second next question
+                // ADD green background, 1 second, next question
                 setCorrectAnswerId(id);
+                
+                setTimeout(() => store.dispatch({
+                    type: "NEW_QUESTION"
+                }), 1000);
             }
 
             else {
-                // ADD RED background and select correct answer, show fail screen
+                // ADD RED background and select correct answer, 1 second, show fail screen
                 setCorrectAnswerId(answers.indexOf(answers.find(answer => answer.correct)));
+                
+                setTimeout(() => router.push("/end"), 1000);
             }
         }
     }

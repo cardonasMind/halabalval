@@ -1,0 +1,30 @@
+@import "../../src/styles/variables";
+
+#end {
+    background: repeating-radial-gradient(#ff0000, black 1rem);
+    min-height: 100vh;
+    
+    &-content {
+        margin: 0 $margin-content;
+        padding: $margin-content;
+        background: white;
+        text-align: center;
+        
+        
+        #title {
+            font-size: 3rem;
+        }
+        
+        
+        #score {
+            background: $primary;
+            color: white;
+            padding: $margin-content;
+            margin: 2rem 0 1rem 0;
+            
+            h1 {
+                color: $success;
+            }
+        }
+    }
+}

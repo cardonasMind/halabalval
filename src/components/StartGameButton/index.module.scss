@@ -1,0 +1,15 @@
+@import "../../styles/variables";
+
+#start-game-button {
+    margin: auto;
+    width: fit-content;
+    background: linear-gradient($primary, darken($primary, 20%));
+    color: white;
+    border-radius: .4rem;
+    padding: 1rem 2rem;
+
+    &:hover {
+        transition: .2s;
+        background: lighten($primary, 10%);
+    }
+}

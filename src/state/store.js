@@ -26,7 +26,8 @@ const placeholderQuestionOne = {
             text: "Ecuador",
             correct: false
         }
-    ]
+    ],
+    selectedAnswerId: -1
 }
 
 const placeholderQuestionTwo = {
@@ -50,7 +51,8 @@ const placeholderQuestionTwo = {
             text: "Moscú",
             correct: false
         }
-    ]
+    ],
+    selectedAnswerId: -1
 }
 
 const placeholderQuestionThree = {
@@ -74,7 +76,8 @@ const placeholderQuestionThree = {
             flag: "https://restcountries.eu/data/per.svg",
             correct: false
         }
-    ]
+    ],
+    selectedAnswerId: -1
 }
 
 
@@ -88,28 +91,8 @@ const initialState = {
 
 
     actualQuestion: {
-        question: {
-            text: "This flag corresponds to?",
-            flag: "https://restcountries.eu/data/col.svg"
-        },
-        answers: [
-            {
-                text: "Colombia",
-                correct: true
-            },
-            {
-                text: "Bolivia",
-                correct: false
-            },
-            {
-                text: "Venezuela",
-                correct: false
-            },
-            {
-                text: "Ecuador",
-                correct: false
-            }
-        ],
+        question: {},
+        answers: [],
         selectedAnswerId: -1
     },
     score: 0
@@ -119,7 +102,7 @@ const reducer = (state, action) => {
     switch(action.type) {
         case "START_GAME":
             return {
-                ...state, inGame: true
+                ...state, inGame: true, actualQuestion: {...placeholderQuestionOne}
             }
 
 
@@ -133,6 +116,12 @@ const reducer = (state, action) => {
         case "ADD_SCORE":
             return {
                 ...state, score: state.score + 2
+            }
+            
+            
+        case "NEW_QUESTION":
+            return {
+                ...state, actualQuestion: {...placeholderQuestionThree}
             }
 
 
