@@ -102,7 +102,7 @@ const reducer = (state, action) => {
     switch(action.type) {
         case "START_GAME":
             return {
-                ...state, inGame: true, actualQuestion: {...placeholderQuestionOne}
+                ...initialState, inGame: true, actualQuestion: {...placeholderQuestionOne}
             }
 
 
