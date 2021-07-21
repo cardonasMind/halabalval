@@ -14,3 +14,16 @@
         }
     }
 }
+
+
+
+
+
+
+@media only screen and (min-width: 768px) {
+    #quiz {
+        max-width: 400px;
+        background: rgba(255, 255, 255, .4);
+        margin: 0 auto;
+    }
+}
