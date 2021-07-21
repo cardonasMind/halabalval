@@ -23,9 +23,10 @@
 }
 
 .answer-success {
-    background: linear-gradient($success, darken($success, 40%));
+    background: $success;;
+    border: 2px solid darken($success, 40%);
 }
 
 .answer-wrong {
-    background: linear-gradient(orange, darken(orange, 20%));
+    background: lighten(orange, 20%);
 }
