@@ -3,13 +3,17 @@ import styles from "./index.module.scss";
 
 import { useRouter } from "next/router";
 
-import { store } from "../../state";
+import { newQuestion } from "../../state/actions";
+import { useDispatch } from "react-redux";
 
 const StartGameButton = () => {
     const router = useRouter();
+    const dispatch = useDispatch();
     
     const startGame = () => {
-        store.dispatch({ type: "START_GAME" });
+        dispatch({ type: "START_GAME" });
+        newQuestion()
+        
         router.push("/");
     }
     

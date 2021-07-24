@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styles from "./index.module.scss";
 
-import { store } from "../../src/state";
+import { useSelector } from "react-redux";
 
 import { useRouter } from "next/router";
 
@@ -9,9 +9,10 @@ import { StartGameButton } from "../../src/components";
 
 const WelcomeScreen = () => {
     const router = useRouter();
+    const inGame = useSelector(state => state.inGame);
     
-    useEffect(() => {
-        if(store.getState().inGame) router.push("/");
+    useEffect(() => {    
+        if(inGame) router.push("/");
     });
     
     return (

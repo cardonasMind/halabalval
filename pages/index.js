@@ -12,12 +12,10 @@ class Index extends PureComponent {
     }
     
     render () {
-        const { inGame, actualQuestion } = this.props;
-        
-        if(!inGame) return null;
+        if(!this.props.inGame) return null;
         else return (
             <Fragment>
-                <Quiz {...actualQuestion} />
+                <Quiz />
                 <Score />
             </Fragment>
         )
@@ -26,8 +24,7 @@ class Index extends PureComponent {
 
 const mapStateToProps = state => {
     return {
-        inGame: state.inGame,
-        actualQuestion: state.actualQuestion
+        inGame: state.inGame
     }
 }
 
