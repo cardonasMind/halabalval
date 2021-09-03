@@ -14,7 +14,7 @@ const StartGameButton = () => {
         dispatch({ type: "START_GAME" });
         newQuestion()
         
-        router.push("/");
+        return router.push("/");
     }
     
     return (

@@ -1,11 +1,17 @@
 import React from "react";
 import styles from "./index.module.scss";
 
-import { store } from "../../src/state";
+import { useSelector } from "react-redux";
 
 import { StartGameButton } from "../../src/components";
 
+interface RootState {
+    score: number
+}
+
 const EndScreen = () => {
+    const score = useSelector((state:RootState) => state.score);
+
     return (
         <div id={styles.end}>
             <div id={styles["end-content"]}>
@@ -13,7 +19,7 @@ const EndScreen = () => {
 
                 <div id={styles.score}>
                     <h2>Your Score was</h2>
-                    <h1>{store.getState().score} points</h1>
+                    <h1>{score} points</h1>
                 </div>
 
                 <b>Another round?</b>
