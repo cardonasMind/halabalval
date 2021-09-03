@@ -7,9 +7,13 @@ import { useRouter } from "next/router";
 
 import { StartGameButton } from "../../src/components";
 
+interface RootState {
+    inGame: boolean
+}
+
 const WelcomeScreen = () => {
     const router = useRouter();
-    const inGame = useSelector(state => state.inGame);
+    const inGame = useSelector((state:RootState) => state.inGame);
     
     useEffect(() => {    
         if(inGame) router.push("/");

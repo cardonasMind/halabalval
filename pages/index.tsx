@@ -6,7 +6,11 @@ import { connect } from "react-redux";
 
 import { Quiz, Score } from "../src/components";
 
-class Index extends PureComponent {
+interface IndexPageProps {
+    inGame: boolean
+};
+
+class Index extends PureComponent<IndexPageProps> {
     componentDidMount() {
         if(!this.props.inGame) Router.push("/welcome");
     }
@@ -22,7 +26,7 @@ class Index extends PureComponent {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state:IndexPageProps) => {
     return {
         inGame: state.inGame
     }
