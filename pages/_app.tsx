@@ -1,6 +1,7 @@
 import React from "react";
 
 import App from "next/app";
+import type { AppProps } from "next/app";
 import Head from "next/head";
 
 import { Provider } from "react-redux";
@@ -11,7 +12,7 @@ import "../src/styles/index.scss";
 
 export default class extends App {
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps }:AppProps = this.props;
 
     return (
       <Provider store={store}>
